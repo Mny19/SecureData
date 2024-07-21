@@ -1,7 +1,6 @@
 from google.cloud import bigquery
 
-# Define constants for project
-PROJECT_ID = "internship-project-428207"  # Replace with your actual project ID
+PROJECT_ID = "internship-project-428207"  
 
 def list_tables(dataset_id):
     client = bigquery.Client(project=PROJECT_ID)
