@@ -3,7 +3,6 @@ from google.cloud import kms_v1
 from google.api_core import exceptions
 import time
 
-# Define constants for project, key ring, and crypto key IDs
 PROJECT_ID = "internship-project-428207"
 KEY_RING_ID = "securedata-keyring"
 CRYPTO_KEY_ID = "securedata-key"
@@ -15,11 +14,11 @@ def configure_bigquery():
     dataset_id = f"{PROJECT_ID}.securedata_dataset"
     dataset = bigquery.Dataset(dataset_id)
     try:
-        client.get_dataset(dataset)  # Raises google.api_core.exceptions.NotFound if not found
+        client.get_dataset(dataset)  
         print(f"Dataset {dataset.dataset_id} already exists.")
     except exceptions.NotFound:
         # Create the dataset if it doesn't exist
-        dataset.location = "US"  # Change location as per your preference
+        dataset.location = "US"  
         dataset = client.create_dataset(dataset, timeout=30)
         print(f"Created dataset {dataset.dataset_id}")
 
@@ -77,7 +76,6 @@ def run_performance_test(query):
 
     query_job = client.query(query)
 
-    # Wait for the query to finish
     results = query_job.result()
     end_time = time.time()
 
